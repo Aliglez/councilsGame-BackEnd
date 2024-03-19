@@ -1,5 +1,5 @@
 /* Users */
-INSERT INTO users (id_user, email, password) VALUES (default, 'admin@councils.com', '$2a$12$8LegtLQWe717tIPvZeivjuqKnaAs5.bm0Q05.5GrAmcKzXw2NjoUO');
+INSERT INTO users (id_user, email, password) VALUES (default, 'admin@councils.com', '$2a$12$gF90ZSIghs8zt5RcttygseASBlZ/dknQ./wL.33EOiEUOy9GYx6nm');
 
 
 /* Roles */

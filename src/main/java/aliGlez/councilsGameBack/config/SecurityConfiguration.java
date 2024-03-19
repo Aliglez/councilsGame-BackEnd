@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                         .deleteCookies("JSSESIONID"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, endpoint + "/login").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.GET, endpoint + "/users").hasRole("ADMIN")
 
                         .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailService)
