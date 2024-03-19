@@ -15,22 +15,27 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "users")
+@Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id-user")
+    @Column(name="id_user")
     private Long id;
 
     private String email;
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "roles-users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    Set<Rol>roles;
+    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<Rol> roles;
 
     public User() {
+    }
+
+    public User( String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -64,6 +69,4 @@ public class User {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-
-   
 }

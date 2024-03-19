@@ -10,22 +10,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import aliGlez.councilsGameBack.roles.Rol;
 
 public class SecurityUser implements UserDetails {
-
+    
     User user;
 
     public SecurityUser(User user) {
         this.user = user;
     }
 
+
+
     @Override
-    public Collection<? extends GrantedAuthority>getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for (Rol role : user.getRoles()) {
-            System.out.println("User rol: " + role.getRole_name());
-            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRole_name());
+        for (Rol rol : user.getRoles()){
+            System.out.println("User rol: " + rol.getName());
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rol.getName());
             authorities.add(authority);
         }
+
         return authorities;
     }
 
@@ -36,17 +39,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return  user.getEmail();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+        return user.getEmail();
     }
 
     @Override
@@ -59,4 +52,15 @@ public class SecurityUser implements UserDetails {
         return true;
     }
 
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
+
+   
