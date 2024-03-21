@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import aliGlez.councilsGameBack.interfaces.IGenericLimitedService;
 
+
 @RestController
-@RequestMapping(path = "${api-endpoint}/councils")
+@RequestMapping(path = "${api-endpoint}/concejos")
 public class CouncilController {
 
     IGenericLimitedService<Council> service;
 
-    public CouncilController(IGenericLimitedService<Council> service) {
+    public CouncilController(CouncilService service) {
         this.service = service;
     }
 
     @GetMapping(path = "")
-    public List<Council> index() {
-        List<Council> councils = service.getAll();
+    public List<Council> index(){
+       List<Council> councils = service.getAll();
         return councils;
     }
 
@@ -32,11 +33,11 @@ public class CouncilController {
     public ResponseEntity<String> deleteCouncil(@PathVariable Long id) {
         try {
             service.deleteById(id);
-            return new ResponseEntity<>("Council deleted sucesfully", HttpStatus.OK);
-        } catch (CouncilNotFoundEXception e) {
+            return new ResponseEntity<>("City deleted successfully", HttpStatus.OK);
+        } catch (CouncilNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return new ResponseEntity<>("An error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("An error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
