@@ -1,18 +1,14 @@
 package aliGlez.councilsGameBack.trails;
 
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import aliGlez.councilsGameBack.councils.Council;
-import aliGlez.councilsGameBack.users.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -44,9 +40,9 @@ public class Trail {
     @JoinColumn(name= "council_id")
     private Council council;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToMany(mappedBy = "trials")
-    Set<User> users;
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    // @ManyToMany(mappedBy = "trials")
+    // Set<User> users;
     
     @Transient
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -56,15 +52,14 @@ public class Trail {
 
     }
 
-    public Trail(String trail_title, String trail_image, String description, int points, String web, Council council,
-            Set<User> users, String councilName) {
+    public Trail(String trail_title, String trail_image, String description, int points, String web, Council council, String councilName) {
         this.trail_title = trail_title;
         this.trail_image = trail_image;
         this.description = description;
         this.points = points;
         this.web = web;
         this.council = council;
-        this.users = users;
+        // this.users = users;
         this.councilName = councilName;
     }
 
@@ -124,13 +119,13 @@ public class Trail {
         this.council = council;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
+    // public Set<User> getUsers() {
+    //     return users;
+    // }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+    // public void setUsers(Set<User> users) {
+    //     this.users = users;
+    // }
 
     public String getCouncilName() {
         return councilName;

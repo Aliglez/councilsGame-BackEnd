@@ -30,6 +30,10 @@ public class User {
     @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<Rol> roles;
 
+    // @ManyToMany(fetch = FetchType.EAGER)
+    // @JoinTable(name = "events_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    // Set<Event> events;
+
     public User() {
     }
 
