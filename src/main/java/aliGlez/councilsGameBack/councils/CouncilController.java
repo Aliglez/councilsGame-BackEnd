@@ -14,7 +14,7 @@ import aliGlez.councilsGameBack.interfaces.IGenericLimitedService;
 
 
 @RestController
-@RequestMapping(path = "${api-endpoint}/concejos")
+@RequestMapping(path = "${api-endpoint}/councils")
 public class CouncilController {
 
     IGenericLimitedService<Council> service;
